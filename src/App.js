@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component, Fragment } from "react";
+import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <button className="button">hello</button>
+      <Fragment>
+        <button className="button button--success">hello</button>
+        <button className="button button--danger">hello</button>
+      </Fragment>
     );
   }
 }
