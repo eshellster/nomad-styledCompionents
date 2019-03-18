@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import styled, { createGlobalStyle, keyframes } from "styled-components";
+import styled, { createGlobalStyle, keyframes, css } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -16,12 +16,13 @@ class App extends Component {
         <Container>
           <Button>hello</Button>
           <Button danger>hello</Button>
-          <Button as="a" href="http://google.com">
-            Go to Google
-          </Button>
-          <AsAnchor as="a" href="http://naver.com">
+          <Anchor href="https://google.com">Go to Google</Anchor>
+          <AsAnchor as="a" href="https://naver.com">
             Go to Naver
           </AsAnchor>
+          <Button as="a" href="https://Daum.net">
+            Go to Daum
+          </Button>
         </Container>
       </Fragment>
     );
@@ -47,10 +48,30 @@ const Button = styled.button`
     outline: none;
   }
   background-color: ${props => (props.danger ? "#ff5722" : "#cddc39")};
+  ${props => {
+    if (props.danger) {
+      return css`
+        animation: ${rotatinon} 2s linear infinite;
+      `;
+    }
+  }};
+`;
+
+const Anchor = styled(Button.withComponent("a"))`
+  text-decoration: none;
 `;
 
 const AsAnchor = styled(Button)`
   text-decoration: none;
+`;
+
+const rotatinon = keyframes`
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
 `;
 
 export default App;
