@@ -14,7 +14,9 @@ class App extends Component {
       <Fragment>
         <GlobalStyle />
         <Container>
-          <Button>hello</Button>
+          <Button danger rotationTime={5}>
+            hello
+          </Button>
           <Button danger>hello</Button>
           <Anchor href="https://google.com">Go to Google</Anchor>
           <AsAnchor as="a" href="https://naver.com">
@@ -51,7 +53,8 @@ const Button = styled.button`
   ${props => {
     if (props.danger) {
       return css`
-        animation: ${rotatinon} 2s linear infinite;
+        animation: ${rotatinon} ${props => props.rotationTime || 2}s linear
+          infinite;
       `;
     }
   }};
