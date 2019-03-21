@@ -22,3 +22,11 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 yarn.lock
+
+/styled-next/node_modules
+/styled-next/.expo
+
+/styled-next/npm-debug.log*
+/styled-next/yarn-debug.log*
+/styled-next/yarn-error.log*
+/styled-next/yarn.lock
