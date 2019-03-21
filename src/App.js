@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import styled, { createGlobalStyle, keyframes, css } from "styled-components";
+import styled, { createGlobalStyle, css } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -8,23 +8,27 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
+const awesomeCard = css`
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.8);
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+`;
+
+const Input = styled.input.attrs({
+  required: true
+})`
+  border: none;
+  ${awesomeCard};
+`;
+
 class App extends Component {
   render() {
     return (
       <Fragment>
         <GlobalStyle />
         <Container>
-          <Button danger rotationTime={5}>
-            hello
-          </Button>
-          <Button danger>hello</Button>
-          <Anchor href="https://google.com">Go to Google</Anchor>
-          <AsAnchor as="a" href="https://naver.com">
-            Go to Naver
-          </AsAnchor>
-          <Button as="a" href="https://Daum.net">
-            Go to Daum
-          </Button>
+          <Input placeholder="hello" />
         </Container>
       </Fragment>
     );
@@ -35,46 +39,6 @@ const Container = styled.div`
   height: 100vh;
   width: 100%;
   background-color: #bdc3c7;
-`;
-
-const Button = styled.button`
-  border-radius: 50px;
-  padding: 5px;
-  min-width: 120px;
-  color: white;
-  font-weight: 600;
-  -webkit-appearance: none;
-  cursor: pointer;
-  &:active,
-  &:focus {
-    outline: none;
-  }
-  background-color: ${props => (props.danger ? "#ff5722" : "#cddc39")};
-  ${props => {
-    if (props.danger) {
-      return css`
-        animation: ${rotatinon} ${props => props.rotationTime || 2}s linear
-          infinite;
-      `;
-    }
-  }};
-`;
-
-const Anchor = styled(Button.withComponent("a"))`
-  text-decoration: none;
-`;
-
-const AsAnchor = styled(Button)`
-  text-decoration: none;
-`;
-
-const rotatinon = keyframes`
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
-  }
 `;
 
 export default App;
